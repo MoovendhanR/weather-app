@@ -16,8 +16,8 @@ function  WeatherComponent(){
       setLoading(false);
     },500)
     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${value?value:"bangalore"}&cnt=7&appid=43554d014c4c52440c74622ee1aea9db&units=metric`).then((res)=>{
-//console.log(res.data)
       updateWeather(res.data)
+      console.log(res.data);
     })
   },[value])
 }
@@ -35,10 +35,15 @@ let arr=[];
     }
     CallFun(value)
 
-    console.log(value)
+    //console.log(value)
     console.log(isLoading)
-        console.log("!",weather)
+        //console.log("!",weather)
 
+
+    let d = new Date();
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+let weekDay = days[d.getDay()];
+//console.log(weekDay);
 
 
       return(<>
@@ -64,29 +69,29 @@ let arr=[];
                <Box display="flex" direction="row" flexWrap="nowwrap"   overflowX= "scroll"
                justify="center" gap={3}>
                   {weather.list.map((e) => (
+                    <div className="border">
+
                     <Box key={e.id} >
                       <Stack>
                       <Text fontSize='xs'>{`${e.dt_txt}`}</Text>
-                     {weather.list[0].weather[0].main==="Clouds"? <Image
+                     <Image
                        boxSize='50px'
                        objectFit='cover'
-                       src='https://weatherapp-swanand.netlify.app/img/cloudy.ac49ed24.svg'
-                       alt='cloud'
-                       />:<Image
-                       boxSize='50px'
-                       objectFit='cover'
-                       src='https://weatherapp-swanand.netlify.app/img/sunny.ef428e2d.svg'
+                       src={`https://openweathermap.org/img/w/${e.weather[0].icon}.png`}
                        alt='clear'
-                       />}
+                       />
+                       <Text fontSize='xs'>{e.weather[0].main}</Text>
                       <Text fontSize='xs'>{`MinTemp${e.main.temp_min}°`}</Text>
                       <Text fontSize='xs'>{`MaxTemp${e.main.temp_max}°`}</Text>
                       
                       </Stack>
 
                     </Box>
+                  </div>
                   ))}
                   
                 </Box>
+
               ) : (
                 <Flex justify="center" mt={"5"}>
                   <Spinner
@@ -112,8 +117,8 @@ let arr=[];
               <br />
               <br />
          <Box display="flex" justifyContent="space-around" >
-               <Text fontSize="2xl">{`sunrise-mins:`}</Text>
-               <Text fontSize='2xl'>{`sunset-mins:`}</Text>
+               <Text fontSize="2xl">{`sunrise-sec:`}</Text>
+               <Text fontSize='2xl'>{`sunset-sec:`}</Text>
          </Box>
          <Box display="flex" justifyContent="space-around" >
                <Text fontSize="2xl">{weather.city.sunrise}</Text>
