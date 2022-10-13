@@ -17,16 +17,16 @@ function  WeatherComponent(){
     },500)
     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${value?value:"bangalore"}&cnt=7&appid=43554d014c4c52440c74622ee1aea9db&units=metric`).then((res)=>{
       updateWeather(res.data)
-      console.log(res.data);
+   //   console.log(res.data);
     })
   },[value])
 }
 let arr=[];
   const date=new Date()
   arr.push(date)
-  console.log(arr[0])
+  //console.log(arr[0])
     const handleClick = () =>{
-     console.log("clicked")
+  //   console.log("clicked")
      CallFun(value)
     }
     const handleChange=(e)=>{
@@ -36,15 +36,14 @@ let arr=[];
     CallFun(value)
 
     //console.log(value)
-    console.log(isLoading)
-        //console.log("!",weather)
+   // console.log(isLoading)
+  //console.log("!",weather)
 
 
     let d = new Date();
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 let weekDay = days[d.getDay()];
 //console.log(weekDay);
-
 
       return(<>
       <Box>
@@ -108,12 +107,12 @@ let weekDay = days[d.getDay()];
              <div className="shadow">
 
          <Box display="flex" justifyContent="space-around" >
-               <Text fontSize="2xl">{`${weather.list[0].main.feels_like}°`}</Text>
-               <Text fontSize='2xl'>{`${weather.city.name}(${weather.city.country})`}</Text>
+               <Text fontSize="2xl">{`${weather?.list[0]?.main.feels_like}°`}</Text>
+               <Text fontSize='2xl'>{`${weather?.city?.name}(${weather?.city?.country})`}</Text>
          </Box>
          <br />
          <br />
-           <Text textAlign='center' fontSize='4xl'>{`population: ${weather.city.population}`}</Text>
+           <Text textAlign='center' fontSize='4xl'>{`population: ${weather?.city?.population}`}</Text>
               <br />
               <br />
          <Box display="flex" justifyContent="space-around" >
@@ -121,8 +120,8 @@ let weekDay = days[d.getDay()];
                <Text fontSize='2xl'>{`sunset-sec:`}</Text>
          </Box>
          <Box display="flex" justifyContent="space-around" >
-               <Text fontSize="2xl">{weather.city.sunrise}</Text>
-               <Text fontSize='2xl'>{weather.city.sunset}</Text>
+               <Text fontSize="2xl">{weather?.city?.sunrise}</Text>
+               <Text fontSize='2xl'>{weather?.city?.sunset}</Text>
          </Box>
              </div>
              <br /><br />
