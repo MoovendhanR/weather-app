@@ -4,7 +4,7 @@ See the section about [demo](weather-app-lxgj.vercel.app) for more information.
 
 
 
-I developed this small weather application  within a two days.
+I developed this small weather application  within a two days fully responsive.
 
 
 ## 🛠 Tech Stack <br/>
